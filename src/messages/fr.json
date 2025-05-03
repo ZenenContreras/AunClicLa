@@ -1,0 +1,85 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "products": "Produits",
+    "foods": "Plats",
+    "boutique": "Boutique",
+    "signIn": "Se connecter",
+    "cart": "Panier",
+    "language": "Langue"
+  },
+  "footer": {
+    "quickLinks": "Liens rapides",
+    "categories": "Catégories",
+    "contact": "Contact",
+    "northAmerica": "Amérique du Nord",
+    "centralAmerica": "Amérique Centrale",
+    "southAmerica": "Amérique du Sud",
+    "terms": "Conditions d'utilisation",
+    "privacy": "Politique de confidentialité",
+    "allRights": "Tous droits réservés."
+  },
+  "landing": {
+    "heroTitle1": "A un",
+    "heroTitle2": "Clic la",
+    "heroDescription": "Relier les Amériques à travers des produits authentiques et des expériences uniques.",
+    "registerEarlyAccess": "Inscription accès anticipé",
+    "sections": {
+      "products": "Produits",
+      "foods": "Plats",
+      "boutique": "Boutique"
+    },
+    "productSection": {
+      "description": "Découvrez farines, pâtes, sauces, assaisonnements, snacks et plus.",
+      "categories": {
+        "flour": "Farines & pâtes",
+        "sauces": "Sauces & assaisonnements",
+        "snacks": "Packs & snacks"
+      },
+      "categoryDescriptions": {
+        "flour": "Les meilleures farines et pâtes pour vos recettes traditionnelles.",
+        "sauces": "Sauces et assaisonnements authentiques pour sublimer vos plats.",
+        "snacks": "Snacks et packs pour tous les goûts."
+      },
+      "viewProducts": "Voir tous les produits",
+      "viewCatalog": "Voir le catalogue complet"
+    },
+    "foodSection": {
+      "description": "Saveurs d'Amérique du Nord, Centrale et du Sud.",
+      "regions": {
+        "northAmerica": {
+          "name": "Amérique du Nord",
+          "description": "Plats typiques d'Amérique du Nord.",
+          "countries": "Mexique, États-Unis, Canada"
+        },
+        "centralAmerica": {
+          "name": "Amérique Centrale",
+          "description": "Plats traditionnels d'Amérique Centrale.",
+          "countries": "Guatemala, Salvador, Honduras, etc."
+        },
+        "southAmerica": {
+          "name": "Amérique du Sud",
+          "description": "Saveurs authentiques d'Amérique du Sud.",
+          "countries": "Colombie, Pérou, Argentine, etc."
+        }
+      },
+      "viewFood": "Voir tous les plats",
+      "viewCatalog": "Voir le catalogue complet"
+    },
+    "boutiqueSection": {
+      "description": "Vêtements, accessoires et souvenirs uniques.",
+      "categories": {
+        "clothing": "Vêtements",
+        "accessories": "Accessoires",
+        "souvenirs": "Souvenirs"
+      },
+      "categoryDescriptions": {
+        "clothing": "Vêtements typiques et modernes d'Amérique latine.",
+        "accessories": "Accessoires authentiques et modernes.",
+        "souvenirs": "Souvenirs et artisanats uniques."
+      },
+      "viewMore": "Voir plus",
+      "viewCatalog": "Voir le catalogue complet"
+    }
+  }
+} 

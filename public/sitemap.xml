@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Página de inicio en tres idiomas -->
+  <url>
+    <loc>https://tourdelasamericas.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourdelasamericas.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourdelasamericas.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourdelasamericas.com/fr/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Sección de Productos en tres idiomas -->
+  <url>
+    <loc>https://tourdelasamericas.com/products</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourdelasamericas.com/products"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourdelasamericas.com/en/products"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourdelasamericas.com/fr/products"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Sección de Comidas en tres idiomas -->
+  <url>
+    <loc>https://tourdelasamericas.com/foods</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourdelasamericas.com/foods"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourdelasamericas.com/en/foods"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourdelasamericas.com/fr/foods"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Sección de Boutique en tres idiomas -->
+  <url>
+    <loc>https://tourdelasamericas.com/boutique</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourdelasamericas.com/boutique"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourdelasamericas.com/en/boutique"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourdelasamericas.com/fr/boutique"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Regiones - Norteamérica en tres idiomas -->
+  <url>
+    <loc>https://tourdelasamericas.com/regions/north-america</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourdelasamericas.com/regions/north-america"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourdelasamericas.com/en/regions/north-america"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourdelasamericas.com/fr/regions/north-america"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Regiones - Centroamérica en tres idiomas -->
+  <url>
+    <loc>https://tourdelasamericas.com/regions/central-america</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourdelasamericas.com/regions/central-america"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourdelasamericas.com/en/regions/central-america"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourdelasamericas.com/fr/regions/central-america"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Regiones - Sudamérica en tres idiomas -->
+  <url>
+    <loc>https://tourdelasamericas.com/regions/south-america</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourdelasamericas.com/regions/south-america"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourdelasamericas.com/en/regions/south-america"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourdelasamericas.com/fr/regions/south-america"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Términos de Servicio en tres idiomas -->
+  <url>
+    <loc>https://tourdelasamericas.com/terminos-de-servicio</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourdelasamericas.com/terminos-de-servicio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourdelasamericas.com/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourdelasamericas.com/fr/conditions-de-service"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Política de Privacidad en tres idiomas -->
+  <url>
+    <loc>https://tourdelasamericas.com/politica-de-privacidad</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tourdelasamericas.com/politica-de-privacidad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tourdelasamericas.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://tourdelasamericas.com/fr/politique-de-confidentialite"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset> 

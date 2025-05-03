@@ -1,0 +1,24 @@
+# Permitir a todos los rastreadores
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tourdelasamericas.com/sitemap.xml
+
+# Reglas específicas para Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Reglas específicas para Bingbot
+User-agent: Bingbot
+Allow: /
+
+# Reglas específicas para Yandex
+User-agent: Yandex
+Allow: /
+
+# No permitir la indexación de páginas administrativas
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /backup/ 

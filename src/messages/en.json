@@ -1,0 +1,85 @@
+{
+  "navbar": {
+    "home": "Home",
+    "products": "Products",
+    "foods": "Foods",
+    "boutique": "Boutique",
+    "signIn": "Sign In",
+    "cart": "Cart",
+    "language": "Language"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "categories": "Categories",
+    "contact": "Contact",
+    "northAmerica": "North America",
+    "centralAmerica": "Central America",
+    "southAmerica": "South America",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "allRights": "All rights reserved."
+  },
+  "landing": {
+    "heroTitle1": "A un",
+    "heroTitle2": "Clic la",
+    "heroDescription": "Connecting the Americas through authentic products and unique experiences.",
+    "registerEarlyAccess": "Register for early access",
+    "sections": {
+      "products": "Products",
+      "foods": "Foods",
+      "boutique": "Boutique"
+    },
+    "productSection": {
+      "description": "Discover flours, doughs, sauces, dressings, snacks and more.",
+      "categories": {
+        "flour": "Flours & doughs",
+        "sauces": "Sauces & dressings",
+        "snacks": "Packs & snacks"
+      },
+      "categoryDescriptions": {
+        "flour": "The best flours and doughs for your traditional recipes.",
+        "sauces": "Authentic sauces and dressings to enhance your dishes.",
+        "snacks": "Snacks and packs for every taste."
+      },
+      "viewProducts": "View all products",
+      "viewCatalog": "View all catalog"
+    },
+    "foodSection": {
+      "description": "Flavors from North, Central and South America.",
+      "regions": {
+        "northAmerica": {
+          "name": "North America",
+          "description": "Typical dishes from North America.",
+          "countries": "Mexico, USA, Canada"
+        },
+        "centralAmerica": {
+          "name": "Central America",
+          "description": "Traditional foods from Central America.",
+          "countries": "Guatemala, El Salvador, Honduras, etc."
+        },
+        "southAmerica": {
+          "name": "South America",
+          "description": "Authentic flavors from South America.",
+          "countries": "Colombia, Peru, Argentina, etc."
+        }
+      },
+      "viewFood": "View all foods",
+      "viewCatalog": "View all catalog"
+    },
+    "boutiqueSection": {
+      "description": "Unique clothing, accessories and souvenirs.",
+      "categories": {
+        "clothing": "Clothing",
+        "accessories": "Accessories",
+        "souvenirs": "Souvenirs"
+      },
+      "categoryDescriptions": {
+        "clothing": "Typical and modern garments from Latin America.",
+        "accessories": "Authentic and modern accessories.",
+        "souvenirs": "Unique souvenirs and crafts."
+      },
+      "viewMore": "View more",
+      "viewCatalog": "View all catalog"
+    }
+  }
+} 

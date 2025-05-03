@@ -1,0 +1,85 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "products": "Productos",
+    "foods": "Comidas",
+    "boutique": "Boutique",
+    "signIn": "Iniciar sesión",
+    "cart": "Carrito",
+    "language": "Idioma"
+  },
+  "footer": {
+    "quickLinks": "Enlaces rápidos",
+    "categories": "Categorías",
+    "contact": "Contacto",
+    "northAmerica": "Norte América",
+    "centralAmerica": "Centro América",
+    "southAmerica": "Sur América",
+    "terms": "Términos de Servicio",
+    "privacy": "Política de Privacidad",
+    "allRights": "Todos los derechos reservados."
+  },
+  "landing": {
+    "heroTitle1": "A un",
+    "heroTitle2": "Clic la",
+    "heroDescription": "Conectando las Américas a través de productos auténticos y experiencias únicas.",
+    "registerEarlyAccess": "Registro acceso anticipado",
+    "sections": {
+      "products": "Productos",
+      "foods": "Comidas",
+      "boutique": "Boutique"
+    },
+    "productSection": {
+      "description": "Descubre harinas, masas, salsas, aderezos, snacks y más.",
+      "categories": {
+        "flour": "Harinas y masas",
+        "sauces": "Salsas y aderezos",
+        "snacks": "Paquetes y snacks"
+      },
+      "categoryDescriptions": {
+        "flour": "Las mejores harinas y masas para tus recetas tradicionales.",
+        "sauces": "Salsas y aderezos auténticos para realzar tus platillos.",
+        "snacks": "Snacks y paquetes para todos los gustos."
+      },
+      "viewProducts": "Ver todos los productos",
+      "viewCatalog": "Ver el catálogo completo"
+    },
+    "foodSection": {
+      "description": "Sabores de Norte, Centro y Sur América.",
+      "regions": {
+        "northAmerica": {
+          "name": "Norte América",
+          "description": "Platillos típicos de Norte América.",
+          "countries": "México, EE.UU., Canadá"
+        },
+        "centralAmerica": {
+          "name": "Centro América",
+          "description": "Comidas tradicionales de Centro América.",
+          "countries": "Guatemala, El Salvador, Honduras, etc."
+        },
+        "southAmerica": {
+          "name": "Sur América",
+          "description": "Sabores auténticos de Sur América.",
+          "countries": "Colombia, Perú, Argentina, etc."
+        }
+      },
+      "viewFood": "Ver todas las comidas",
+      "viewCatalog": "Ver el catálogo completo"
+    },
+    "boutiqueSection": {
+      "description": "Ropa, accesorios y souvenirs únicos.",
+      "categories": {
+        "clothing": "Ropa",
+        "accessories": "Accesorios",
+        "souvenirs": "Souvenirs"
+      },
+      "categoryDescriptions": {
+        "clothing": "Prendas típicas y modernas de América Latina.",
+        "accessories": "Accesorios auténticos y modernos.",
+        "souvenirs": "Recuerdos y artesanías únicas."
+      },
+      "viewMore": "Ver más",
+      "viewCatalog": "Ver el catálogo completo"
+    }
+  }
+} 
