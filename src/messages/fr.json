@@ -81,5 +81,64 @@
       "viewMore": "Voir plus",
       "viewCatalog": "Voir le catalogue complet"
     }
+  },
+  "auth": {
+    "userMenu": {
+      "profile": "Voir le profil",
+      "orders": "Commandes",
+      "favorites": "Favoris",
+      "logout": "Déconnexion"
+    },
+    "login": {
+      "title": "Se connecter",
+      "subtitle": "Accédez à votre compte pour continuer",
+      "email": "E-mail",
+      "emailPlaceholder": "vous@exemple.com",
+      "password": "Mot de passe",
+      "passwordPlaceholder": "********",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe",
+      "remember": "Se souvenir de moi",
+      "forgot": "Mot de passe oublié ?",
+      "button": "Se connecter",
+      "loading": "Chargement...",
+      "or": "ou",
+      "google": "Continuer avec Google",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "register": "S'inscrire",
+      "terms1": "En continuant, vous acceptez nos",
+      "terms2": "Conditions d'utilisation",
+      "terms3": "et",
+      "privacy": "Politique de confidentialité"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "subtitle": "Rejoignez notre communauté",
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "email": "E-mail",
+      "emailPlaceholder": "vous@exemple.com",
+      "password": "Mot de passe",
+      "passwordPlaceholder": "********",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe",
+      "confirm": "Confirmer le mot de passe",
+      "confirmPlaceholder": "********",
+      "button": "Créer un compte",
+      "loading": "Chargement...",
+      "or": "ou",
+      "google": "Continuer avec Google",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "login": "Se connecter",
+      "terms1": "En continuant, vous acceptez nos",
+      "terms2": "Conditions d'utilisation",
+      "terms3": "et",
+      "privacy": "Politique de confidentialité",
+      "success": "Vérifiez votre e-mail pour activer votre compte !"
+    },
+    "notifications": {
+      "loginSuccess": "Connexion réussie !",
+      "logoutSuccess": "Déconnexion réussie !"
+    }
   }
 } 

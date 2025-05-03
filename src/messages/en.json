@@ -81,5 +81,64 @@
       "viewMore": "View more",
       "viewCatalog": "View all catalog"
     }
+  },
+  "auth": {
+    "userMenu": {
+      "profile": "View profile",
+      "orders": "Orders",
+      "favorites": "Favorites",
+      "logout": "Log out"
+    },
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Access your account to continue",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "********",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "remember": "Remember me",
+      "forgot": "Forgot your password?",
+      "button": "Sign in",
+      "loading": "Loading...",
+      "or": "or",
+      "google": "Continue with Google",
+      "noAccount": "Don't have an account?",
+      "register": "Register",
+      "terms1": "By continuing, you accept our",
+      "terms2": "Terms of Service",
+      "terms3": "and",
+      "privacy": "Privacy Policy"
+    },
+    "register": {
+      "title": "Create account",
+      "subtitle": "Join our community",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "********",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "confirm": "Confirm password",
+      "confirmPlaceholder": "********",
+      "button": "Create account",
+      "loading": "Loading...",
+      "or": "or",
+      "google": "Continue with Google",
+      "hasAccount": "Already have an account?",
+      "login": "Sign in",
+      "terms1": "By continuing, you accept our",
+      "terms2": "Terms of Service",
+      "terms3": "and",
+      "privacy": "Privacy Policy",
+      "success": "Check your email to activate your account!"
+    },
+    "notifications": {
+      "loginSuccess": "Signed in successfully!",
+      "logoutSuccess": "Signed out successfully!"
+    }
   }
 } 

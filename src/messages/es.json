@@ -81,5 +81,64 @@
       "viewMore": "Ver más",
       "viewCatalog": "Ver el catálogo completo"
     }
+  },
+  "auth": {
+    "userMenu": {
+      "profile": "Ver perfil",
+      "orders": "Pedidos",
+      "favorites": "Favoritos",
+      "logout": "Cerrar sesión"
+    },
+    "login": {
+      "title": "Iniciar sesión",
+      "subtitle": "Accede a tu cuenta para continuar",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tucorreo@ejemplo.com",
+      "password": "Contraseña",
+      "passwordPlaceholder": "********",
+      "showPassword": "Mostrar contraseña",
+      "hidePassword": "Ocultar contraseña",
+      "remember": "Recuérdame",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "button": "Iniciar sesión",
+      "loading": "Cargando...",
+      "or": "o",
+      "google": "Continuar con Google",
+      "noAccount": "¿No tienes una cuenta?",
+      "register": "Regístrate",
+      "terms1": "Al continuar, aceptas nuestros",
+      "terms2": "Términos de Servicio",
+      "terms3": "y",
+      "privacy": "Política de Privacidad"
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "subtitle": "Únete a nuestra comunidad",
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tucorreo@ejemplo.com",
+      "password": "Contraseña",
+      "passwordPlaceholder": "********",
+      "showPassword": "Mostrar contraseña",
+      "hidePassword": "Ocultar contraseña",
+      "confirm": "Confirmar contraseña",
+      "confirmPlaceholder": "********",
+      "button": "Crear cuenta",
+      "loading": "Cargando...",
+      "or": "o",
+      "google": "Continuar con Google",
+      "hasAccount": "¿Ya tienes una cuenta?",
+      "login": "Iniciar sesión",
+      "terms1": "Al continuar, aceptas nuestros",
+      "terms2": "Términos de Servicio",
+      "terms3": "y",
+      "privacy": "Política de Privacidad",
+      "success": "¡Verifica tu correo para activar tu cuenta!"
+    },
+    "notifications": {
+      "loginSuccess": "¡Sesión iniciada correctamente!",
+      "logoutSuccess": "¡Sesión cerrada correctamente!"
+    }
   }
 } 
