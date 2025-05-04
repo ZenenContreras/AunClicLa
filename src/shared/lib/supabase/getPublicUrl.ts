@@ -1,6 +1,23 @@
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+import { supabase } from './supabaseClient';
+
+// Cache para URL de imágenes para evitar recálculos
+const imageUrlCache = new Map();
 
 export function getSupabaseImageUrl(path: string) {
   if (!path) return '/placeholder-product.png';
-  return `${SUPABASE_URL}/storage/v1/object/public/${path}`;
+  
+  // Verificar si la URL ya está en caché
+  if (imageUrlCache.has(path)) {
+    return imageUrlCache.get(path);
+  }
+  
+  // Obtener la URL pública desde Supabase
+  const url = supabase.storage
+    .from('productos')
+    .getPublicUrl(path).data.publicUrl;
+  
+  // Guardar en caché para uso futuro
+  imageUrlCache.set(path, url);
+  
+  return url;
 } 

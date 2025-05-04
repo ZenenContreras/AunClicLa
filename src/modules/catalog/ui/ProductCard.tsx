@@ -1,103 +1,199 @@
 'use client';
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCart, Star, AlertTriangle } from 'lucide-react';
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { ShoppingBag, Heart, Star, UtensilsCrossed, Shirt, ShoppingCart } from 'lucide-react';
 import { getSupabaseImageUrl } from '@/shared/lib/supabase/getPublicUrl';
 
 const typeConfig = {
   product: {
     accent: 'indigo',
-    gradient: 'from-indigo-50 to-blue-50'
+    hover: 'indigo',
+    button: 'indigo',
+    gradient: 'from-indigo-600 to-blue-500',
+    icon: ShoppingBag
   },
   food: {
     accent: 'amber',
-    gradient: 'from-amber-50 to-orange-50'
+    hover: 'amber',
+    button: 'amber',
+    gradient: 'from-amber-600 to-orange-500',
+    icon: UtensilsCrossed
   },
   boutique: {
-    accent: 'purple',
-    gradient: 'from-purple-50 to-pink-50'
+    accent: 'pink',
+    hover: 'purple',
+    button: 'purple',
+    gradient: 'from-purple-600 to-pink-500',
+    icon: Shirt
   }
 };
 
-const ProductCard = ({ product, type = 'product', onOpenDetail }: any) => {
+interface ProductCardProps {
+  product: any;
+  onOpenDetail: (product: any) => void;
+  type?: 'product' | 'food' | 'boutique';
+  compact?: boolean;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ 
+  product, 
+  onOpenDetail, 
+  type = 'product',
+  compact = false
+}) => {
   const t = useTranslations();
-
-  const config = typeConfig[type as keyof typeof typeConfig];
-
+  const config = typeConfig[type];
+  const Icon = config.icon;
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  
+  // Calcular el precio con descuento si existe
+  const hasDiscount = product.descuento && product.descuento > 0;
+  const discountedPrice = hasDiscount 
+    ? (product.precio - (product.precio * product.descuento / 100)).toFixed(2) 
+    : null;
+  
+  // Verificar si hay poco stock
+  const lowStock = product.stock > 0 && product.stock <= 5;
+  
+  // Obtener la URL de la imagen
+  const imageUrl = product.imagen_principal ? getSupabaseImageUrl(product.imagen_principal) : '/placeholder-product.png';
+  
+  // Manejar clic en añadir al carrito
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Evitar que se abra el modal
+    setIsAddingToCart(true);
+    
+    // Simulación de añadir al carrito
+    setTimeout(() => {
+      setIsAddingToCart(false);
+    }, 800);
+  };
+  
   return (
-    <motion.div
-      layout
+    <motion.div 
+      className={`bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 transition-all duration-300 h-full flex flex-col cursor-pointer`}
+      whileHover={{ 
+        y: -5, 
+        boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        borderColor: `rgb(var(--color-${config.accent}-200))`
+      }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.3 }}
       onClick={() => onOpenDetail(product)}
-      className={`bg-white rounded-xl shadow-sm overflow-hidden group hover:shadow-lg transition-all duration-300 border border-${config.accent}-100 hover:border-${config.accent}-300 cursor-pointer relative`}
     >
-      {/* Contenedor de imagen cuadrado */}
-      <div className="aspect-square relative overflow-hidden group">
-        <div className={`w-full h-full bg-gradient-to-br ${config.gradient} flex items-center justify-center`}>
+      {/* Imagen del producto */}
+      <div className="relative overflow-hidden aspect-square">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent z-10" />
+        
+        {product.imagen_principal ? (
           <img
-            src={getSupabaseImageUrl(product.imagen_principal)}
+            src={imageUrl}
             alt={product.nombre}
-            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105 rounded-xl"
-            loading="lazy"
-            onError={(e: any) => {
-              e.target.onerror = null;
-              e.target.src = '/placeholder-product.png';
-            }}
-            aria-label={product.nombre}
+            className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
           />
-        </div>
-        {product.stock < 30 && (
-          <div className="absolute bottom-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-            <AlertTriangle className="h-3 w-3" />
-            {t('common.lowStock', { default: 'Pocas unidades' })}
+        ) : (
+          <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${config.gradient}`}>
+            <Icon className="h-16 w-16 text-white/50" />
           </div>
         )}
-        {/* Rating simulado */}
-        <div className="absolute bottom-2 right-2 bg-black bg-opacity-50 rounded-full px-2 py-1 flex items-center gap-1">
-          <Star className="h-3 w-3 text-yellow-400 fill-current" />
-          <span className="text-white text-xs font-medium">
-            {product.rating ? product.rating.toFixed(1) : '0.0'}
+        
+        {/* Badges */}
+        <div className="absolute top-2 left-2 z-20 flex flex-col gap-1">
+          {hasDiscount && (
+            <span className={`px-2 py-1 text-xs font-bold rounded-full bg-red-500 text-white`}>
+              -{product.descuento}%
+            </span>
+          )}
+          
+          {lowStock && (
+            <span className="px-2 py-1 text-xs font-bold rounded-full bg-amber-500 text-white">
+              {t('common.lowStock')}
+            </span>
+          )}
+        </div>
+        
+        {/* Botón de favoritos */}
+        <button 
+          className="absolute top-2 right-2 z-20 p-1.5 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white text-gray-600 hover:text-red-500 transition-colors"
+          aria-label="Add to favorites"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Heart className="h-4 w-4" />
+        </button>
+      </div>
+      
+      {/* Contenido */}
+      <div className="p-4 flex-1 flex flex-col">
+        {/* Subcategoría */}
+        <div className="text-xs text-gray-500 mb-1">
+          {product.subcategorias?.nombre || ''}
+        </div>
+        
+        {/* Nombre del producto */}
+        <h3 className="font-medium text-gray-900 mb-1 line-clamp-2">
+          {product.nombre}
+        </h3>
+        
+        {/* Estrellas (si no es compacto) */}
+        {!compact && (
+          <div className="flex items-center mb-2">
+            <div className="flex">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star 
+                  key={star} 
+                  className={`h-3.5 w-3.5 ${star <= (product.rating || 0) ? `text-${config.accent}-500 fill-${config.accent}-500` : 'text-gray-300'}`} 
+                />
+              ))}
+            </div>
+            <span className="text-xs text-gray-500 ml-1">
+              ({product.reviews_count || 0})
+            </span>
+          </div>
+        )}
+        
+        {/* Precio */}
+        <div className="mt-auto pt-2 flex items-baseline">
+          {hasDiscount ? (
+            <>
+              <span className={`text-${config.accent}-600 font-semibold`}>${discountedPrice}</span>
+              <span className="text-gray-400 text-sm line-through ml-1">${product.precio.toFixed(2)}</span>
+            </>
+          ) : (
+            <span className={`text-${config.accent}-600 font-semibold`}>${product.precio.toFixed(2)}</span>
+          )}
+          
+          {/* Stock */}
+          <span className="ml-auto text-xs text-gray-500">
+            {product.stock > 0 ? `${product.stock} ${t('product.available')}` : t('product.outOfStock')}
           </span>
         </div>
       </div>
-
-      {/* Contenido del card */}
-      <div className="p-3 flex flex-col">
-        {product.categorias?.nombre && (
-          <span className={`text-xs font-medium text-${config.accent}-600 bg-${config.accent}-50 px-2 py-0.5 rounded-full inline-block mb-1 truncate`}>
-            {product.categorias.nombre}
-          </span>
-        )}
-
-        <h3 className="text-sm font-semibold text-gray-900 line-clamp-1 mb-2">
-          {product.nombre}
-        </h3>
-
-        <div className="flex items-center justify-between mt-auto">
-          <span className="text-sm font-bold text-gray-900">
-            ${Number(product.precio).toFixed(2)}
-          </span>
-          <button
-            disabled={product.stock === 0}
-            className={`
-              flex items-center gap-1 px-2 py-1 rounded-lg text-white text-xs font-medium
-              ${product.stock === 0 
-                ? 'bg-gray-400 cursor-not-allowed' 
-                : `bg-${config.accent}-600 hover:bg-${config.accent}-700`}
-              disabled:opacity-50
-            `}
-          >
-            <ShoppingCart className="h-3 w-3" />
-            <span className="hidden sm:inline">
-              {product.stock === 0 
-                ? t('product.outOfStock', { default: 'Agotado' })
-                : t('product.addToCart', { default: 'Agregar' })}
-            </span>
-          </button>
-        </div>
+      
+      {/* Botón de añadir al carrito */}
+      <div className="px-4 pb-4" onClick={(e) => e.stopPropagation()}>
+        <motion.button
+          onClick={handleAddToCart}
+          disabled={product.stock <= 0 || isAddingToCart}
+          className={`w-full py-2 px-4 rounded-lg font-medium text-sm flex items-center justify-center gap-2
+            ${product.stock > 0 
+              ? `bg-${config.accent}-600 hover:bg-${config.accent}-700 text-white` 
+              : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+            } transition-colors`}
+          whileHover={{ scale: product.stock > 0 ? 1.02 : 1 }}
+          whileTap={{ scale: product.stock > 0 ? 0.98 : 1 }}
+        >
+          {isAddingToCart ? (
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            <>
+              <ShoppingCart className="h-4 w-4" />
+              {product.stock > 0 ? t('product.addToCart') : t('product.outOfStock')}
+            </>
+          )}
+        </motion.button>
       </div>
     </motion.div>
   );
