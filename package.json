@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.2",
     "@supabase/supabase-js": "^2.49.4",
     "lucide-react": "^0.507.0",
     "motion": "^12.9.4",

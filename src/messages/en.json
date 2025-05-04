@@ -140,5 +140,55 @@
       "loginSuccess": "Signed in successfully!",
       "logoutSuccess": "Signed out successfully!"
     }
+  },
+  "profile": {
+    "title": "User profile",
+    "tabs": {
+      "personal": "Profile",
+      "personalShort": "Profile",
+      "security": "Security",
+      "securityShort": "Security",
+      "notifications": "Notifications",
+      "notificationsShort": "Notifs."
+    },
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "city": "City",
+    "state": "State",
+    "postalCode": "Postal code",
+    "country": "Country",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "addressUpdated": "Address updated successfully.",
+    "addressUpdateError": "Error updating address.",
+    "security": {
+      "warning": "Never share your password with anyone. Use a strong password and change it regularly.",
+      "password": {
+        "title": "Password",
+        "description": "You can change your access password.",
+        "changeButton": "Change password"
+      },
+      "twoFactor": {
+        "title": "Two-factor authentication",
+        "description": "Soon you will be able to enable two-step authentication for greater security.",
+        "setupButton": "Setup 2FA"
+      }
+    },
+    "notifications": {
+      "info": "Set your notification preferences.",
+      "email": {
+        "title": "Email notifications",
+        "description": "Receive news and important updates by email."
+      },
+      "push": {
+        "title": "Push notifications",
+        "description": "Receive instant alerts on your device."
+      }
+    },
+    "errorProfile": "Could not load profile.",
+    "errorAddresses": "Could not load addresses."
   }
 } 

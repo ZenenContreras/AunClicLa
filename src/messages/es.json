@@ -140,5 +140,55 @@
       "loginSuccess": "¡Sesión iniciada correctamente!",
       "logoutSuccess": "¡Sesión cerrada correctamente!"
     }
+  },
+  "profile": {
+    "title": "Perfil de usuario",
+    "tabs": {
+      "personal": "Perfil",
+      "personalShort": "Perfil",
+      "security": "Seguridad",
+      "securityShort": "Seguridad",
+      "notifications": "Notificaciones",
+      "notificationsShort": "Notifs."
+    },
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "state": "Estado",
+    "postalCode": "Código postal",
+    "country": "País",
+    "edit": "Editar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "addressUpdated": "Dirección actualizada correctamente.",
+    "addressUpdateError": "Error al actualizar la dirección.",
+    "security": {
+      "warning": "Nunca compartas tu contraseña con nadie. Usa una contraseña segura y cámbiala regularmente.",
+      "password": {
+        "title": "Contraseña",
+        "description": "Puedes cambiar tu contraseña de acceso.",
+        "changeButton": "Cambiar contraseña"
+      },
+      "twoFactor": {
+        "title": "Doble autenticación",
+        "description": "Próximamente podrás activar la autenticación en dos pasos para mayor seguridad.",
+        "setupButton": "Configurar 2FA"
+      }
+    },
+    "notifications": {
+      "info": "Configura tus preferencias de notificación.",
+      "email": {
+        "title": "Notificaciones por correo",
+        "description": "Recibe novedades y actualizaciones importantes por email."
+      },
+      "push": {
+        "title": "Notificaciones push",
+        "description": "Recibe alertas instantáneas en tu dispositivo."
+      }
+    },
+    "errorProfile": "No se pudo cargar el perfil.",
+    "errorAddresses": "No se pudieron cargar las direcciones."
   }
 } 

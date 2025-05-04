@@ -140,5 +140,67 @@
       "loginSuccess": "Connexion réussie !",
       "logoutSuccess": "Déconnexion réussie !"
     }
+  },
+  "profile": {
+    "title": "Profil utilisateur",
+    "tabs": {
+      "personal": "Profil",
+      "personalShort": "Profil",
+      "security": "Sécurité",
+      "securityShort": "Sécurité",
+      "notifications": "Notifications",
+      "notificationsShort": "Notifs."
+    },
+    "name": "Nom",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "city": "Ville",
+    "state": "État",
+    "postalCode": "Code postal",
+    "country": "Pays",
+    "edit": "Modifier",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "addressUpdated": "Adresse mise à jour avec succès.",
+    "addressUpdateError": "Erreur lors de la mise à jour de l'adresse.",
+    "security": {
+      "warning": "Ne partagez jamais votre mot de passe avec qui que ce soit. Utilisez un mot de passe fort et changez-le régulièrement.",
+      "password": {
+        "title": "Mot de passe",
+        "description": "Vous pouvez changer votre mot de passe d'accès.",
+        "changeButton": "Changer le mot de passe"
+      },
+      "twoFactor": {
+        "title": "Authentification à deux facteurs",
+        "description": "Bientôt, vous pourrez activer l'authentification à deux étapes pour plus de sécurité.",
+        "setupButton": "Configurer 2FA"
+      }
+    },
+    "notifications": {
+      "info": "Configurez vos préférences de notification.",
+      "email": {
+        "title": "Notifications par e-mail",
+        "description": "Recevez des nouvelles et des mises à jour importantes par e-mail."
+      },
+      "push": {
+        "title": "Notifications push",
+        "description": "Recevez des alertes instantanées sur votre appareil."
+      }
+    },
+    "errorProfile": "Impossible de charger le profil.",
+    "errorAddresses": "Impossible de charger les adresses.",
+    "createdAt": "Membre depuis",
+    "socialAuth": "Authentification sociale",
+    "addresses": "Adresses de livraison",
+    "addAddress": "Ajouter une adresse",
+    "noAddresses": "Vous n'avez pas d'adresses enregistrées",
+    "addFirstAddress": "Ajoutez votre première adresse pour faciliter vos achats.",
+    "addressLabel": "Adresse",
+    "addressRequired": "Tous les champs sont obligatoires.",
+    "addressAdded": "Adresse ajoutée avec succès.",
+    "addressAddError": "Erreur lors de l'ajout de l'adresse.",
+    "addressDeleted": "Adresse supprimée avec succès.",
+    "addressDeleteError": "Erreur lors de la suppression de l'adresse."
   }
 } 

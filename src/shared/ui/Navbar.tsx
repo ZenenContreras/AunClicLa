@@ -106,7 +106,7 @@ export function useNotification() {
 
 function ToastContainer({ toasts, onRemove }: { toasts: any[]; onRemove: (id: number) => void }) {
   return (
-    <div className="fixed top-5 right-5 z-[9999] flex flex-col gap-3 items-end">
+    <div className="fixed bottom-5 right-5 z-[9999] flex flex-col gap-3 items-end">
       {toasts.map((toast) => (
         <motion.div
           key={toast.id}
@@ -196,6 +196,11 @@ export default function Navbar() {
   const handleNavClick = useCallback((href: string) => {
     router.push(href);
     setIsMobileMenuOpen(false);
+    setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 800);
   }, [router]);
 
   return (
@@ -229,11 +234,11 @@ export default function Navbar() {
                 {NAV_LINKS.map((link) => (
                   <motion.li key={link.id} variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 400, damping: 30 } } }} className="relative">
                     <button
-                      className={`px-3 py-2 rounded-lg font-semibold text-lg tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 
+                      className={`px-3 py-2 rounded-lg font-quicksand text-lg tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 
                         ${pathname === link.href ? "text-indigo-600" : "text-gray-700 hover:text-indigo-600"}
                         bg-transparent`}
                       aria-current={pathname === link.href ? "page" : undefined}
-                      style={{ minWidth: 90, cursor: "pointer", fontFamily: 'Playfair Display, serif' }}
+                      style={{ minWidth: 90, cursor: "pointer", fontFamily: 'Quicksand, sans-serif' }}
                       onClick={() => handleNavClick(link.href)}
                     >
                       <span className="relative">
