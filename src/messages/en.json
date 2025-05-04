@@ -190,5 +190,45 @@
     },
     "errorProfile": "Could not load profile.",
     "errorAddresses": "Could not load addresses."
+  },
+  "catalog": {
+    "title": "Catalog",
+    "products": "Products",
+    "foods": "Traditional Foods",
+    "boutique": "Boutique",
+    "subcategory": "Subcategory",
+    "all": "All",
+    "noProducts": "No products in this category.",
+    "viewDetails": "View details",
+    "loading": "Loading products...",
+    "error": "Could not load products. Please try again.",
+    "empty": "No products available.",
+    "loadMore": "Load more"
+  },
+  "product": {
+    "addToCart": "Add",
+    "outOfStock": "Out of stock",
+    "available": "available",
+    "reviews": "reviews",
+    "description": "Description",
+    "price": "Price",
+    "stock": "Stock",
+    "subcategory": "Subcategory",
+    "seeMore": "See more",
+    "close": "Close",
+    "details": "Product details",
+    "noReviews": "No reviews yet",
+    "addReview": "Add review",
+    "yourReview": "Your review",
+    "writeReview": "Write your opinion...",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "back": "Back"
+  },
+  "common": {
+    "lowStock": "Low stock",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back"
   }
 } 

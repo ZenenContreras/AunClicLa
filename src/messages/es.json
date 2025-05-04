@@ -190,5 +190,45 @@
     },
     "errorProfile": "No se pudo cargar el perfil.",
     "errorAddresses": "No se pudieron cargar las direcciones."
+  },
+  "catalog": {
+    "title": "Catálogo",
+    "products": "Productos",
+    "foods": "Comidas Tradicionales",
+    "boutique": "Boutique",
+    "subcategory": "Subcategoría",
+    "all": "Todas",
+    "noProducts": "No hay productos en esta categoría.",
+    "viewDetails": "Ver detalles",
+    "loading": "Cargando productos...",
+    "error": "No se pudieron cargar los productos. Intenta de nuevo.",
+    "empty": "No hay productos disponibles.",
+    "loadMore": "Cargar más"
+  },
+  "product": {
+    "addToCart": "Agregar",
+    "outOfStock": "Agotado",
+    "available": "disponibles",
+    "reviews": "reseñas",
+    "description": "Descripción",
+    "price": "Precio",
+    "stock": "Stock",
+    "subcategory": "Subcategoría",
+    "seeMore": "Ver más",
+    "close": "Cerrar",
+    "details": "Detalles del producto",
+    "noReviews": "Aún no hay reseñas",
+    "addReview": "Agregar reseña",
+    "yourReview": "Tu reseña",
+    "writeReview": "Escribe tu opinión...",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "back": "Volver"
+  },
+  "common": {
+    "lowStock": "Pocas unidades",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "back": "Volver"
   }
 } 

@@ -17,6 +17,9 @@ export const config = {
   matcher: [
     '/',
     '/(es|en|fr)/:path*',
-    '/perfil', // Asegúrate de incluir la ruta aquí
+    '/perfil',
+    '/productos',
+    '/comidas',
+    '/boutique'
   ],
 };

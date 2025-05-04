@@ -200,7 +200,7 @@ export default function Navbar() {
       if (typeof window !== 'undefined') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-    }, 800);
+    }, 50);
   }, [router]);
 
   return (

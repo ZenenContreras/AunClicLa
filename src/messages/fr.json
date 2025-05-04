@@ -202,5 +202,45 @@
     "addressAddError": "Erreur lors de l'ajout de l'adresse.",
     "addressDeleted": "Adresse supprimée avec succès.",
     "addressDeleteError": "Erreur lors de la suppression de l'adresse."
+  },
+  "catalog": {
+    "title": "Catalogue",
+    "products": "Produits",
+    "foods": "Plats traditionnels",
+    "boutique": "Boutique",
+    "subcategory": "Sous-catégorie",
+    "all": "Tous",
+    "noProducts": "Aucun produit dans cette catégorie.",
+    "viewDetails": "Voir les détails",
+    "loading": "Chargement des produits...",
+    "error": "Impossible de charger les produits. Veuillez réessayer.",
+    "empty": "Aucun produit disponible.",
+    "loadMore": "Charger plus"
+  },
+  "product": {
+    "addToCart": "Ajouter",
+    "outOfStock": "Rupture",
+    "available": "disponibles",
+    "reviews": "avis",
+    "description": "Description",
+    "price": "Prix",
+    "stock": "Stock",
+    "subcategory": "Sous-catégorie",
+    "seeMore": "Voir plus",
+    "close": "Fermer",
+    "details": "Détails du produit",
+    "noReviews": "Pas encore d'avis",
+    "addReview": "Ajouter un avis",
+    "yourReview": "Votre avis",
+    "writeReview": "Écrivez votre opinion...",
+    "submit": "Envoyer",
+    "cancel": "Annuler",
+    "back": "Retour"
+  },
+  "common": {
+    "lowStock": "Stock faible",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "back": "Retour"
   }
 } 
