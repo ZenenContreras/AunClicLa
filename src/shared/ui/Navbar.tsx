@@ -183,7 +183,17 @@ export default function Navbar() {
           >
             <button onClick={() => { router.push("/perfil"); setIsUserMenuOpen(false); }} className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 transition" style={{ cursor: "pointer" }}><User className="h-4 w-4 mr-2" />{tAuth("userMenu.profile")}</button>
             <button onClick={() => { router.push("/pedidos"); setIsUserMenuOpen(false); }} className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 transition" style={{ cursor: "pointer" }}><ShoppingCart className="h-4 w-4 mr-2" />{tAuth("userMenu.orders")}</button>
-            <button onClick={() => { router.push("/favoritos"); setIsUserMenuOpen(false); }} className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 transition" style={{ cursor: "pointer" }}><Heart className="h-4 w-4 mr-2" />{tAuth("userMenu.favorites")}</button>
+            <button 
+              onClick={() => { 
+                router.push(`/${locale}/favoritos`); 
+                setIsUserMenuOpen(false); 
+              }} 
+              className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 transition" 
+              style={{ cursor: "pointer" }}
+            >
+              <Heart className="h-4 w-4 mr-2" />
+              {tAuth("userMenu.favorites")}
+            </button>
             <div className="border-t border-gray-100 my-1"></div>
             <button onClick={async () => { await supabase.auth.signOut(); setIsUserMenuOpen(false); notify("auth.notifications.logoutSuccess", "success"); }} className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition" style={{ cursor: "pointer" }}><LogOut className="h-4 w-4 mr-2" />{tAuth("userMenu.logout")}</button>
           </motion.div>
@@ -260,7 +270,13 @@ export default function Navbar() {
               </motion.ul>
             </div>
             <div className="hidden md:flex items-center gap-3 lg:gap-5">
-              <motion.button whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }} className="relative p-2 rounded-full text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 transition-all duration-200" aria-label={t("cart")}>
+              <motion.button 
+                whileHover={{ scale: 1.08 }} 
+                whileTap={{ scale: 0.95 }} 
+                className="relative p-2 rounded-full text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 transition-all duration-200" 
+                aria-label={t("cart")}
+                onClick={() => router.push(`/${locale}/carrito`)}
+              >
                 <ShoppingCart className="h-6 w-6" />
                 {cartItemCount > 0 && (
                   <motion.span
@@ -283,7 +299,13 @@ export default function Navbar() {
             </div>
             {/* MOBILE NAV */}
             <div className="flex md:hidden items-center gap-1.5">
-              <motion.button whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }} className="relative p-2 rounded-full text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 transition-all duration-200" aria-label={t("cart")}>
+              <motion.button 
+                whileHover={{ scale: 1.08 }} 
+                whileTap={{ scale: 0.95 }} 
+                className="relative p-2 rounded-full text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 transition-all duration-200" 
+                aria-label={t("cart")}
+                onClick={() => router.push(`/${locale}/carrito`)}
+              >
                 <ShoppingCart className="h-7 w-7 sm:h-8 sm:w-8" />
                 {cartItemCount > 0 && (
                   <motion.span
@@ -348,7 +370,7 @@ export default function Navbar() {
                     <>
                       <button className="w-full flex items-center gap-3 px-5 py-4 text-gray-700 hover:bg-indigo-50 active:bg-indigo-100 rounded-2xl text-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 shadow-sm transition-all duration-150" style={{ cursor: "pointer" }} onClick={() => { router.push("/perfil"); setIsMobileMenuOpen(false); }}><User className="h-8 w-8" /> <span>{tAuth("userMenu.profile")}</span></button>
                       <button className="w-full flex items-center gap-3 px-5 py-4 text-gray-700 hover:bg-indigo-50 active:bg-indigo-100 rounded-2xl text-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 shadow-sm transition-all duration-150" style={{ cursor: "pointer" }} onClick={() => { router.push("/pedidos"); setIsMobileMenuOpen(false); }}><ShoppingCart className="h-8 w-8" /> <span>{tAuth("userMenu.orders")}</span></button>
-                      <button className="w-full flex items-center gap-3 px-5 py-4 text-gray-700 hover:bg-indigo-50 active:bg-indigo-100 rounded-2xl text-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 shadow-sm transition-all duration-150" style={{ cursor: "pointer" }} onClick={() => { router.push("/favoritos"); setIsMobileMenuOpen(false); }}><Heart className="h-8 w-8" /> <span>{tAuth("userMenu.favorites")}</span></button>
+                      <button className="w-full flex items-center gap-3 px-5 py-4 text-gray-700 hover:bg-indigo-50 active:bg-indigo-100 rounded-2xl text-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 shadow-sm transition-all duration-150" style={{ cursor: "pointer" }} onClick={() => { router.push(`/${locale}/favoritos`); setIsMobileMenuOpen(false); }}><Heart className="h-8 w-8" /> <span>{tAuth("userMenu.favorites")}</span></button>
                       <button className="w-full flex items-center gap-3 px-5 py-4 text-red-600 hover:bg-red-50 active:bg-red-100 rounded-2xl text-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 shadow-sm transition-all duration-150" style={{ cursor: "pointer" }} onClick={async () => { await supabase.auth.signOut(); setIsMobileMenuOpen(false); }}><LogOut className="h-8 w-8" /> <span>{tAuth("userMenu.logout")}</span></button>
                     </>
                   ) : (

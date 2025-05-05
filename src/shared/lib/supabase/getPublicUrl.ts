@@ -3,6 +3,13 @@ import { supabase } from './supabaseClient';
 // Cache para URL de imágenes para evitar recálculos
 const imageUrlCache = new Map();
 
+export const getPublicUrl = (bucket: string, path: string) => {
+  if (!path) return null;
+  
+  const { data } = supabase.storage.from(bucket).getPublicUrl(path);
+  return data.publicUrl;
+};
+
 export function getSupabaseImageUrl(path: string) {
   if (!path) return '/placeholder-product.png';
   

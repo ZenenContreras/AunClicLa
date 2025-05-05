@@ -1,4 +1,4 @@
-import { supabase } from '../../../../shared/lib/supabase/supabaseClient';
+import { supabase } from '../../../shared/lib/supabase/supabaseClient';
 
 export async function forgotPassword(email: string) {
   const { data, error } = await supabase.auth.resetPasswordForEmail(email);

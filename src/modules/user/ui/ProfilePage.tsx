@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useUser } from "../../../shared/hooks/useUser";
 import { useTranslations } from "next-intl";
-import { getUserProfile, updateUserAddress } from "../application/usecases/getUserProfile";
+import { getUserProfile, updateUserAddress } from "../application/getUserProfile";
 import { useNotification } from "../../../shared/ui/Navbar";
 import ForgotPasswordForm from "./ForgotPasswordForm";
 import { User, Mail, Phone, MapPin, Edit2, Save, X, Lock, Shield, Bell } from "lucide-react";

@@ -1,0 +1,33 @@
+{
+  "favorite": {
+    "title": "Mis Favoritos",
+    "empty": "No tienes favoritos guardados",
+    "startExploring": "Explora nuestros productos y guarda tus favoritos para comprarlos más tarde",
+    "explore": "Explorar productos",
+    "remove": "Eliminar de favoritos",
+    "addToCart": "Añadir al carrito",
+    "addAllToCart": "Añadir todos al carrito",
+    "continueShopping": "Seguir comprando",
+    "inStock": "Disponible para envío inmediato",
+    "discoverProducts": "Descubre productos",
+    "recommendations": "Recomendaciones para ti",
+    "recommendationsDescription": "Basado en tus favoritos, te recomendamos estos productos",
+    "viewRecommendations": "Ver recomendaciones",
+    "notifications": {
+      "removed": "Producto eliminado de favoritos",
+      "error": "Ocurrió un error"
+    }
+  },
+  "error": {
+    "favorite": "Ocurrió un error al cargar tus favoritos",
+    "tryAgain": "Por favor, intenta nuevamente más tarde o contacta a soporte"
+  },
+  "common": {
+    "retry": "Reintentar",
+    "loading": "Cargando..."
+  },
+  "product": {
+    "category": "Categoría",
+    "new": "Nuevo"
+  }
+} 

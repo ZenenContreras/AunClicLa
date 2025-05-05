@@ -1,10 +1,13 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { ShoppingBag, Heart, Star, UtensilsCrossed, Shirt, ShoppingCart } from 'lucide-react';
 import { getSupabaseImageUrl } from '@/shared/lib/supabase/getPublicUrl';
+import { useUser } from '@/shared/hooks/useUser';
+import { useNotification } from '@/shared/ui/Navbar';
+import { addFavorite, deleteFavorite, getFavorite } from '@/modules/user/application/getFavorite';
 
 const typeConfig = {
   product: {
@@ -47,6 +50,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const config = typeConfig[type];
   const Icon = config.icon;
   const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isTogglingFavorite, setIsTogglingFavorite] = useState(false);
+  const user = useUser();
+  
+  // Manejo seguro de useNotification
+  const notificationContext = useNotification();
+  const notify = notificationContext ? 
+    (notificationContext.notify || function(msg: string, type: string) { console.log(msg, type); }) : 
+    function(msg: string, type: string) { console.log(msg, type); };
   
   // Calcular el precio con descuento si existe
   const hasDiscount = product.descuento && product.descuento > 0;
@@ -60,6 +72,28 @@ const ProductCard: React.FC<ProductCardProps> = ({
   // Obtener la URL de la imagen
   const imageUrl = product.imagen_principal ? getSupabaseImageUrl(product.imagen_principal) : '/placeholder-product.png';
   
+  // Verificar si el producto está en favoritos
+  useEffect(() => {
+    const checkFavoriteStatus = async () => {
+      if (!user) {
+        setIsFavorite(false);
+        return;
+      }
+      
+      try {
+        const favorites = await getFavorite(user.email);
+        const isProductFavorite = favorites.some(
+          (fav: any) => fav.producto_id === product.id
+        );
+        setIsFavorite(isProductFavorite);
+      } catch (error) {
+        console.error('Error al verificar favoritos:', error);
+      }
+    };
+    
+    checkFavoriteStatus();
+  }, [user, product.id]);
+  
   // Manejar clic en añadir al carrito
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation(); // Evitar que se abra el modal
@@ -69,6 +103,37 @@ const ProductCard: React.FC<ProductCardProps> = ({
     setTimeout(() => {
       setIsAddingToCart(false);
     }, 800);
+  };
+  
+  // Manejar clic en favorito
+  const handleToggleFavorite = async (e: React.MouseEvent) => {
+    e.stopPropagation(); // Evitar que se abra el modal
+    
+    if (!user) {
+      notify('Inicia sesión para guardar favoritos', 'error');
+      return;
+    }
+    
+    if (isTogglingFavorite) return;
+    
+    try {
+      setIsTogglingFavorite(true);
+      
+      if (isFavorite) {
+        await deleteFavorite(user.email, product.id);
+        setIsFavorite(false);
+        notify('Producto eliminado de favoritos', 'success');
+      } else {
+        await addFavorite(user.email, product.id);
+        setIsFavorite(true);
+        notify('Producto añadido a favoritos', 'success');
+      }
+    } catch (error) {
+      console.error('Error al gestionar favorito:', error);
+      notify('Error al gestionar favorito', 'error');
+    } finally {
+      setIsTogglingFavorite(false);
+    }
   };
   
   return (
@@ -116,13 +181,24 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
         
         {/* Botón de favoritos */}
-        <button 
-          className="absolute top-2 right-2 z-20 p-1.5 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white text-gray-600 hover:text-red-500 transition-colors"
-          aria-label="Add to favorites"
-          onClick={(e) => e.stopPropagation()}
+        <motion.button 
+          className={`absolute top-2 right-2 z-20 p-1.5 rounded-full ${
+            isFavorite 
+              ? 'bg-red-50 text-red-500' 
+              : 'bg-white/80 backdrop-blur-sm hover:bg-white text-gray-600 hover:text-red-500'
+          } transition-colors`}
+          aria-label={isFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"}
+          onClick={handleToggleFavorite}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          disabled={isTogglingFavorite}
         >
-          <Heart className="h-4 w-4" />
-        </button>
+          {isTogglingFavorite ? (
+            <div className="w-4 h-4 border-2 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            <Heart className={`h-4 w-4 ${isFavorite ? 'fill-red-500' : ''}`} />
+          )}
+        </motion.button>
       </div>
       
       {/* Contenido */}

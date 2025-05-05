@@ -132,19 +132,10 @@ const ProductsPage = () => {
     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6">
       {/* Hero section */}
       <div className="relative rounded-2xl overflow-hidden mb-8 bg-gradient-to-r from-indigo-600 to-blue-500">
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay">
-          <Image 
-            src="/images/patterns/geometric-pattern.svg" 
-            alt="Background pattern" 
-            layout="fill" 
-            objectFit="cover"
-            className="opacity-30"
-          />
-        </div>
-        <div className="relative z-10 px-6 py-12 sm:px-12 sm:py-16 text-white">
+        <div className="relative z-10 px-4 py-8 sm:px-8 sm:py-10 text-white">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-8 md:mb-0 md:mr-8">
-              <h1 className="text-3xl sm:text-4xl font-bold mb-4">
+              <h1 className="text-2xl sm:text-3xl font-bold mb-3">
                 {t('catalog.productsHero')}
               </h1>
               <p className="text-indigo-100 max-w-xl">
@@ -161,7 +152,7 @@ const ProductsPage = () => {
               </div>
             </div>
             <div className="w-full md:w-auto">
-              <div className="bg-white rounded-xl shadow-lg p-4 max-w-md mx-auto md:mx-0">
+              <div className="bg-white rounded-xl shadow-lg p-3 max-w-md mx-auto md:mx-0">
                 <form onSubmit={handleSearch} className="flex items-center">
                   <div className="relative flex-grow">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />

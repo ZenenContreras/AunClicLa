@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { loginUser } from "../application/usecases/loginUser";
-import { signInWithGoogle } from "../application/usecases/googleAuth";
+import { loginUser } from "../application/loginUser";
+import { signInWithGoogle } from "../application/googleAuth";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { useTranslations } from "next-intl";
 

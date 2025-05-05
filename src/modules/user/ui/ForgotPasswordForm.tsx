@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { forgotPassword } from "../application/usecases/forgotPassword";
+import { forgotPassword } from "../application/forgotPassword";
 import { Mail } from "lucide-react";
 
 export default function ForgotPasswordForm({ onLogin }: { onLogin: () => void }) {

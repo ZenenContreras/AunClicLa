@@ -11,6 +11,9 @@ import {
 import { getSupabaseImageUrl } from '@/shared/lib/supabase/getPublicUrl';
 import ReviewSection from './components/ReviewSection';
 import { getProductRatingStats } from '../application/getReviews';
+import { useUser } from '@/shared/hooks/useUser';
+import { useNotification } from '@/shared/ui/Navbar';
+import { addFavorite, deleteFavorite, getFavorite } from '@/modules/user/application/getFavorite';
 
 const typeConfig = {
   product: {
@@ -34,6 +37,13 @@ const ProductDetailModal = ({ product, onClose, type = 'product' }) => {
   const t = useTranslations();
   const config = typeConfig[type];
   const Icon = config.icon;
+  const user = useUser();
+  
+  // Manejo seguro de useNotification
+  const notificationContext = useNotification();
+  const notify = notificationContext ? 
+    (notificationContext.notify || function(msg: string, type: string) { console.log(msg, type); }) : 
+    function(msg: string, type: string) { console.log(msg, type); };
 
   const [quantity, setQuantity] = useState(1);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -43,6 +53,7 @@ const ProductDetailModal = ({ product, onClose, type = 'product' }) => {
   const [ratingStats, setRatingStats] = useState({ averageRating: 0, reviewCount: 0 });
   const [showReviews, setShowReviews] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isTogglingFavorite, setIsTogglingFavorite] = useState(false);
 
   useEffect(() => {
     const imgs = [product.imagen_principal];
@@ -61,6 +72,28 @@ const ProductDetailModal = ({ product, onClose, type = 'product' }) => {
     updateRatingStats();
   }, [product.id]);
 
+  // Verificar si el producto está en favoritos
+  useEffect(() => {
+    const checkFavoriteStatus = async () => {
+      if (!user) {
+        setIsFavorite(false);
+        return;
+      }
+      
+      try {
+        const favorites = await getFavorite(user.email);
+        const isProductFavorite = favorites.some(
+          (fav: any) => fav.producto_id === product.id
+        );
+        setIsFavorite(isProductFavorite);
+      } catch (error) {
+        console.error('Error al verificar favoritos:', error);
+      }
+    };
+    
+    checkFavoriteStatus();
+  }, [user, product.id]);
+
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -72,6 +105,35 @@ const ProductDetailModal = ({ product, onClose, type = 'product' }) => {
     document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = 'auto'; };
   }, []);
+
+  // Manejar clic en favorito
+  const handleToggleFavorite = async () => {
+    if (!user) {
+      notify('Inicia sesión para guardar favoritos', 'error');
+      return;
+    }
+    
+    if (isTogglingFavorite) return;
+    
+    try {
+      setIsTogglingFavorite(true);
+      
+      if (isFavorite) {
+        await deleteFavorite(user.email, product.id);
+        setIsFavorite(false);
+        notify('Producto eliminado de favoritos', 'success');
+      } else {
+        await addFavorite(user.email, product.id);
+        setIsFavorite(true);
+        notify('Producto añadido a favoritos', 'success');
+      }
+    } catch (error) {
+      console.error('Error al gestionar favorito:', error);
+      notify('Error al gestionar favorito', 'error');
+    } finally {
+      setIsTogglingFavorite(false);
+    }
+  };
 
   const renderStars = (rating, size = 'sm') => {
     const sizeMap = { sm: 'h-4 w-4', md: 'h-5 w-5' };
@@ -129,7 +191,7 @@ const ProductDetailModal = ({ product, onClose, type = 'product' }) => {
               <div className="w-full md:w-1/2 p-4 md:p-6 overflow-y-auto">
                 <div className="flex items-center justify-between mb-4">
                   <button onClick={() => setShowReviews(false)} className="flex items-center text-sm text-gray-600 hover:text-gray-800">
-                    <ArrowLeft className="h-4 w-4 mr-1" /> {t('product.backToProduct')}
+                    <ArrowLeft className="h-4 w-4 mr-1" /> {t('product.back')}
                   </button>
                   <button onClick={onClose} className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
                     <X className="h-5 w-5 text-gray-600" />
@@ -165,9 +227,23 @@ const ProductDetailModal = ({ product, onClose, type = 'product' }) => {
                     </button>
                   </>
                 )}
-                <button onClick={() => setIsFavorite(!isFavorite)} className={`absolute top-3 left-3 p-2 rounded-full shadow ${isFavorite ? `bg-${config.accent}-100 text-${config.accent}-600` : 'bg-white text-gray-600 hover:bg-gray-100'}`}>
-                  <Heart className="h-4 w-4" />
-                </button>
+                <motion.button 
+                  onClick={handleToggleFavorite}
+                  className={`absolute top-3 left-3 p-2 rounded-full shadow ${
+                    isFavorite 
+                      ? `bg-red-100 text-red-600` 
+                      : 'bg-white text-gray-600 hover:bg-gray-100'
+                  }`}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  disabled={isTogglingFavorite}
+                >
+                  {isTogglingFavorite ? (
+                    <div className="w-4 h-4 border-2 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+                  ) : (
+                    <Heart className={`h-4 w-4 ${isFavorite ? 'fill-red-500' : ''}`} />
+                  )}
+                </motion.button>
               </div>
 
               {/* Información del producto */}
