@@ -1,9 +1,19 @@
-# Permitir a todos los rastreadores
+# www.robotstxt.org/
+
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://tourdelasamericas.com/sitemap.xml
+# Sitemap files
+Sitemap: https://aunclicla.ca/sitemap.xml
+Sitemap: https://aunclicla.ca/sitemap-products.xml
+Sitemap: https://aunclicla.ca/sitemap-foods.xml
+Sitemap: https://aunclicla.ca/sitemap-boutique.xml
+
+# Disallow specific paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /checkout/success
+Disallow: /checkout/cancel
 
 # Reglas específicas para Googlebot
 User-agent: Googlebot

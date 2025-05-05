@@ -1,15 +1,7 @@
 {
-  "name": "Tour de las Américas",
-  "short_name": "Américas",
-  "description": "Descubre los auténticos tesoros culinarios y artesanales de todo el continente americano",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#4f46e5",
-  "orientation": "portrait-primary",
-  "lang": "es",
-  "dir": "ltr",
-  "categories": ["food", "shopping", "travel", "culture"],
+  "name": "A un Clic la - Latin American Products in Canada",
+  "short_name": "A un Clic la",
+  "description": "Authentic Latin American products delivered across Canada",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -24,26 +16,36 @@
       "purpose": "any maskable"
     }
   ],
+  "theme_color": "#4f46e5",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "orientation": "portrait",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["shopping", "food", "lifestyle"],
+  "related_applications": [
+    {
+      "platform": "web"
+    }
+  ],
+  "prefer_related_applications": false,
   "shortcuts": [
     {
-      "name": "Productos",
-      "short_name": "Productos",
-      "description": "Ver nuestros productos",
-      "url": "/products"
+      "name": "Products",
+      "url": "/productos",
+      "description": "Browse our products"
     },
     {
-      "name": "Comidas",
-      "short_name": "Comidas",
-      "description": "Explorar gastronomía",
-      "url": "/foods"
+      "name": "Foods",
+      "url": "/comidas",
+      "description": "Explore traditional foods"
     },
     {
       "name": "Boutique",
-      "short_name": "Boutique",
-      "description": "Visitar nuestra boutique",
-      "url": "/boutique"
+      "url": "/boutique",
+      "description": "Discover unique items"
     }
-  ],
-  "related_applications": [],
-  "prefer_related_applications": false
+  ]
 } 
