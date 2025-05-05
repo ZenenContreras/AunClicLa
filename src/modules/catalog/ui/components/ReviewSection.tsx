@@ -33,7 +33,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
   const [submitting, setSubmitting] = useState(false);
   const [userHasReviewed, setUserHasReviewed] = useState(false);
   const [helpfulReviews, setHelpfulReviews] = useState<Record<string, boolean>>({});
-  
+
   // Cargar reseñas
   useEffect(() => {
     const loadReviews = async () => {
@@ -57,7 +57,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
     
     loadReviews();
   }, [productId, user, t]);
-  
+
   // Manejar envío de reseña
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,7 +95,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
       setSubmitting(false);
     }
   };
-  
+
   // Marcar reseña como útil
   const handleMarkHelpful = (reviewId: string) => {
     setHelpfulReviews(prev => ({
@@ -103,7 +103,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
       [reviewId]: !prev[reviewId]
     }));
   };
-  
+
   // Formatear fecha
   const formatDate = (dateString: string) => {
     try {
@@ -118,7 +118,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
       return dateString;
     }
   };
-  
+
   // Renderizar estrellas para calificación
   const renderStars = (rating: number, size: 'xs' | 'sm' | 'md' | 'lg' = 'md') => {
     const sizes = {
@@ -127,7 +127,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
       md: 'h-4 w-4',
       lg: 'h-5 w-5'
     };
-    
+
     return (
       <div className="flex">
         {[1, 2, 3, 4, 5].map((star) => (
@@ -139,11 +139,12 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
       </div>
     );
   };
-  
+
   return (
     <div className="space-y-4">
+      {/* Título y botón para agregar reseña */}
       <div className="flex items-center justify-between">
-        <h2 className={`${compactMode ? 'text-base' : 'text-sm md:text-base'} font-bold text-gray-900`}>
+        <h2 className={`font-bold text-gray-900 ${compactMode ? 'text-base' : 'text-sm md:text-base'}`}>
           {t('product.reviewsTitle')}
         </h2>
         {user && !userHasReviewed && !showAddReview && (
@@ -157,91 +158,18 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
           </motion.button>
         )}
       </div>
-      
-      {/* Resumen de calificaciones (versión compacta) */}
-      {reviews.length > 0 && compactMode && (
-        <div className="bg-white rounded-lg p-3 flex items-center gap-4 border border-gray-100 shadow-sm">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-gray-900">
-              {(reviews.reduce((acc, r) => acc + r.estrellas, 0) / reviews.length).toFixed(1)}
-            </div>
-            <div className="flex justify-center mt-0.5">
-              {renderStars((reviews.reduce((acc, r) => acc + r.estrellas, 0) / reviews.length), 'sm')}
-            </div>
-            <div className="text-xs text-gray-500 mt-0.5">
-              {reviews.length} {reviews.length === 1 ? t('product.review') : t('product.reviews')}
-            </div>
-          </div>
-          
-          <div className="flex-1 w-full">
-            {[5, 4, 3, 2, 1].map(rating => {
-              const count = reviews.filter(r => r.estrellas === rating).length;
-              const percentage = (count / reviews.length) * 100;
-              
-              return (
-                <div key={rating} className="flex items-center gap-1.5 mb-1">
-                  <div className="flex items-center gap-0.5 w-10">
-                    <span className="text-xs font-medium">{rating}</span>
-                    <Star className={`h-3 w-3 text-${accentColor}-500 fill-${accentColor}-500`} />
-                  </div>
-                  <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full bg-${accentColor}-500 rounded-full`} 
-                      style={{ width: `${percentage}%` }}
-                    ></div>
-                  </div>
-                  <div className="w-8 text-xs text-gray-500 text-right">
-                    {percentage.toFixed(0)}%
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-      
-      {/* Resumen de calificaciones (versión normal) */}
+
+      {/* Resumen de calificaciones */}
       {reviews.length > 0 && !compactMode && (
-        <div className="bg-gray-50 rounded-lg p-3 flex flex-col md:flex-row items-center gap-4">
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-gray-900">
-              {(reviews.reduce((acc, r) => acc + r.estrellas, 0) / reviews.length).toFixed(1)}
-            </div>
-            <div className="flex justify-center mt-0.5">
-              {renderStars((reviews.reduce((acc, r) => acc + r.estrellas, 0) / reviews.length), 'sm')}
-            </div>
-            <div className="text-xs text-gray-500 mt-0.5">
-              {reviews.length} {reviews.length === 1 ? t('product.review') : t('product.reviews')}
-            </div>
+        <div className="bg-gray-50 rounded-lg p-4 flex flex-col items-center gap-4">
+          <div className="text-3xl font-bold text-gray-900">
+            {(reviews.reduce((acc, r) => acc + r.estrellas, 0) / reviews.length).toFixed(1)}
           </div>
-          
-          <div className="flex-1 w-full">
-            {[5, 4, 3, 2, 1].map(rating => {
-              const count = reviews.filter(r => r.estrellas === rating).length;
-              const percentage = (count / reviews.length) * 100;
-              
-              return (
-                <div key={rating} className="flex items-center gap-1.5 mb-1">
-                  <div className="flex items-center gap-0.5 w-10">
-                    <span className="text-xs font-medium">{rating}</span>
-                    <Star className={`h-3 w-3 text-${accentColor}-500 fill-${accentColor}-500`} />
-                  </div>
-                  <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full bg-${accentColor}-500 rounded-full`} 
-                      style={{ width: `${percentage}%` }}
-                    ></div>
-                  </div>
-                  <div className="w-8 text-xs text-gray-500 text-right">
-                    {percentage.toFixed(0)}%
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <div className="flex justify-center">{renderStars((reviews.reduce((acc, r) => acc + r.estrellas, 0) / reviews.length), 'lg')}</div>
+          <div className="text-sm text-gray-500">{reviews.length} {reviews.length === 1 ? t('product.review') : t('product.reviews')}</div>
         </div>
       )}
-      
+
       {/* Formulario para añadir reseña */}
       <AnimatePresence>
         {showAddReview && (
@@ -249,15 +177,13 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className={`bg-white rounded-lg p-3 md:p-4 overflow-hidden border border-${accentColor}-100 shadow-sm`}
+            className={`bg-white rounded-lg p-4 overflow-hidden border border-${accentColor}-100 shadow-sm`}
           >
-            <h3 className="text-sm font-semibold text-gray-900 mb-3">{t('product.shareYourThoughts')}</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">{t('product.shareYourThoughts')}</h3>
             <form onSubmit={handleSubmitReview}>
               <div className="mb-4">
-                <label className="block text-xs font-medium text-gray-700 mb-1.5">
-                  {t('product.rateProduct')}
-                </label>
-                <div className="flex items-center gap-1 mb-3">
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('product.rateProduct')}</label>
+                <div className="flex items-center gap-2 mb-3">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <motion.button
                       key={star}
@@ -286,39 +212,30 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
                 <motion.button
                   type="button"
                   onClick={() => setShowAddReview(false)}
-                  className="px-3 py-1.5 border border-gray-300 rounded-lg text-gray-700 text-xs font-medium hover:bg-gray-50 shadow-sm"
+                  className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 text-sm font-medium hover:bg-gray-50 shadow-sm"
                   disabled={submitting}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   {t('product.cancel')}
                 </motion.button>
                 <motion.button
                   type="submit"
                   disabled={submitting}
-                  className={`px-3 py-1.5 bg-${accentColor}-600 text-white rounded-lg text-xs font-medium hover:bg-${accentColor}-700 shadow-sm flex items-center gap-1.5`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  className={`px-4 py-2 bg-${accentColor}-600 text-white rounded-lg text-sm font-medium hover:bg-${accentColor}-700 shadow-sm`}
                 >
                   {submitting ? (
-                    <>
-                      <div className={`w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin`}></div>
-                      {t('common.loading')}
-                    </>
+                    <div className={`w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin`}></div>
                   ) : (
-                    <>
-                      <Send className="h-3 w-3" />
-                      {t('product.submit')}
-                    </>
+                    <Send className="h-4 w-4" />
                   )}
+                  {t('product.submit')}
                 </motion.button>
               </div>
             </form>
           </motion.div>
         )}
       </AnimatePresence>
-      
-      {/* Lista de reseñas */}
+
+      {/* Mostrar reseñas */}
       {loading ? (
         <div className="flex justify-center py-4">
           <div className={`w-6 h-6 border-2 border-${accentColor}-500 border-t-transparent rounded-full animate-spin`}></div>
@@ -338,18 +255,15 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
                     <User className={`h-4 w-4 text-${accentColor}-600`} />
                   </div>
                 </div>
-                
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center justify-between gap-1 mb-1.5">
                     <div>
-                      <h4 className="text-xs font-semibold text-gray-900">
+                      <h4 className="text-sm font-semibold text-gray-900">
                         {review.usuarios?.nombre || 'Usuario'}
                       </h4>
                       <div className="flex items-center gap-1.5 mt-0.5">
                         {renderStars(review.estrellas, 'xs')}
-                        <span className="text-[10px] text-gray-500">
-                          {formatDate(review.fecha_creacion)}
-                        </span>
+                        <span className="text-[10px] text-gray-500">{formatDate(review.fecha_creacion)}</span>
                       </div>
                     </div>
                     <div className="flex items-center">
@@ -359,18 +273,15 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
                       </span>
                     </div>
                   </div>
-                  
                   <p className="text-xs text-gray-700 my-2">{review.comentario}</p>
-                  
                   <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-100">
                     <button 
                       onClick={() => handleMarkHelpful(review.id)}
                       className={`flex items-center gap-0.5 text-[10px] ${helpfulReviews[review.id] ? `text-${accentColor}-600 font-medium` : 'text-gray-500 hover:text-gray-700'}`}
                     >
                       <ThumbsUp className={`h-2.5 w-2.5 ${helpfulReviews[review.id] ? 'fill-current' : ''}`} />
-                      {t('product.helpful')} {helpfulReviews[review.id] ? '(1)' : ''}
+                      {t('product.helpful')}
                     </button>
-                    
                     <button className="text-[10px] text-gray-500 hover:text-gray-700 flex items-center gap-0.5">
                       <Flag className="h-2.5 w-2.5" />
                       {t('product.reportReview')}
@@ -382,7 +293,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
           ))}
         </div>
       ) : (
-        <div className={`text-center py-6 bg-white rounded-lg border border-${accentColor}-100 shadow-sm`}>
+        <div className="text-center py-6 bg-white rounded-lg border border-gray-100 shadow-sm">
           <div className={`w-12 h-12 mx-auto rounded-full bg-${accentColor}-100 flex items-center justify-center mb-3`}>
             <Star className={`h-6 w-6 text-${accentColor}-500`} />
           </div>
@@ -400,7 +311,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
           )}
         </div>
       )}
-      
+
       {/* Error */}
       {error && (
         <motion.div 
@@ -420,4 +331,4 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
   );
 };
 
-export default ReviewSection; 
+export default ReviewSection;

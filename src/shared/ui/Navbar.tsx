@@ -234,7 +234,7 @@ export default function Navbar() {
                 {NAV_LINKS.map((link) => (
                   <motion.li key={link.id} variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 400, damping: 30 } } }} className="relative">
                     <button
-                      className={`px-3 py-2 rounded-lg font-quicksand text-lg tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 
+                      className={`px-2 py-2 rounded-lg font-quicksand text-lg tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 
                         ${pathname === link.href ? "text-indigo-600" : "text-gray-700 hover:text-indigo-600"}
                         bg-transparent`}
                       aria-current={pathname === link.href ? "page" : undefined}

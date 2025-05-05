@@ -97,19 +97,19 @@ const ProfilePage = () => {
     {
       id: "personal",
       label: t("profile.tabs.personal"),
-      icon: <User className="h-4 w-4 sm:h-5 sm:w-5" />,
+      icon: <User className="h-5 w-5 " />,
       mobileLabel: t("profile.tabs.personalShort")
     },
     {
       id: "security",
       label: t("profile.tabs.security"),
-      icon: <Shield className="h-4 w-4 sm:h-5 sm:w-5" />,
+      icon: <Shield className="h-5 w-5" />,
       mobileLabel: t("profile.tabs.securityShort")
     },
     {
       id: "notifications",
       label: t("profile.tabs.notifications"),
-      icon: <Bell className="h-4 w-4 sm:h-5 sm:w-5" />,
+      icon: <Bell className="h-5 w-5" />,
       mobileLabel: t("profile.tabs.notificationsShort")
     }
   ];
