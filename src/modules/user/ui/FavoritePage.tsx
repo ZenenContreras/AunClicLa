@@ -87,21 +87,26 @@ const FavoritePage = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortOption, setSortOption] = useState('');
   const [categories, setCategories] = useState<string[]>([]);
-  const user = useUser();
+  const { user, loading: userLoading } = useUser();
   const router = useRouter();
   const notify = useNotification();
   const locale = useLocale();
 
   useEffect(() => {
+    // Solo cargar favoritos cuando tengamos información del usuario
+    if (userLoading) return;
+    
+    // Si no hay usuario después de cargar, redirigir al login
+    if (!user && !userLoading) {
+      router.push(`/${locale}/login?redirect=/${locale}/favoritos`);
+      return;
+    }
+    
     const loadFavorites = async () => {
-      if (!user) {
-        setLoading(false);
-        return;
-      }
-      
       try {
         setLoading(true);
-        const favoritesData = await getFavorite(user.email);
+        const favoritesData = await getFavorite(user);
+        
         // Convertir los datos a formato Favorite[]
         const typedFavorites: Favorite[] = favoritesData.map((fav: any) => ({
           id: fav.id,
@@ -129,7 +134,7 @@ const FavoritePage = () => {
     };
 
     loadFavorites();
-  }, [user]);
+  }, [user, userLoading, locale, router]);
 
   // Filtrar y ordenar favoritos
   useEffect(() => {
@@ -179,62 +184,40 @@ const FavoritePage = () => {
     setFilteredFavorites(result);
   }, [favorites, searchTerm, selectedCategory, sortOption]);
 
+  // Función para eliminar un favorito
   const onDeleteFavorite = async (productId: number) => {
     if (!user) return;
     
     try {
-      await deleteFavorite(user.email, productId);
+      await deleteFavorite(user, productId);
       const updatedFavorites = favorites.filter(fav => fav.producto_id !== productId);
       setFavorites(updatedFavorites);
+      setFilteredFavorites(
+        filteredFavorites.filter(fav => fav.producto_id !== productId)
+      );
       
-      // Usar una cadena de texto directa en lugar de una clave de traducción
-      if (typeof notify === 'function') {
-        notify('Producto eliminado de favoritos', 'success');
-      }
+      notify({
+        title: "Eliminado de favoritos",
+        message: "El producto ha sido eliminado de tus favoritos",
+        type: "success"
+      });
     } catch (err) {
       console.error('Error al eliminar favorito:', err);
-      if (typeof notify === 'function') {
-        notify('Error al eliminar de favoritos', 'error');
-      }
+      notify({
+        title: "Error",
+        message: "No se pudo eliminar el producto de favoritos",
+        type: "error"
+      });
     }
   };
 
-  useEffect(() => {
-    // Usar un temporizador para dar tiempo a que se cargue la sesión
-    let redirectTimer: NodeJS.Timeout;
-    
-    if (!user && !loading) {
-      // Esperar 1 segundo antes de redirigir para dar tiempo a que se cargue la sesión
-      redirectTimer = setTimeout(() => {
-        // Verificar nuevamente si el usuario existe antes de redirigir
-        if (!user) {
-          router.push(`/${locale}/login?redirect=/${locale}/favoritos`);
-        }
-      }, 1000);
-    }
-    
-    return () => {
-      // Limpiar el temporizador si el componente se desmonta
-      if (redirectTimer) clearTimeout(redirectTimer);
-    };
-  }, [user, loading, router, locale]);
-
-  useEffect(() => {
-    console.log("Estado de autenticación:", { user, loading });
-  }, [user, loading]);
-
-  if (loading) {
+  if (userLoading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center"
-        >
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
-          <p className="mt-4 text-base text-gray-600 font-medium">{tCommon.loading}</p>
-        </motion.div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col items-center">
+          <Loader2 className="w-10 h-10 text-indigo-600 animate-spin mb-4" />
+          <p className="text-gray-600">{tCommon.loading}</p>
+        </div>
       </div>
     );
   }
@@ -266,8 +249,8 @@ const FavoritePage = () => {
     </div>
   );
 
-  if (!user) {
-    return null; // No renderizar nada si no hay usuario (el useEffect se encargará de la redirección)
+  if (!user && !userLoading) {
+    return null; // No renderizar nada, el useEffect se encargará de la redirección
   }
 
   return (
